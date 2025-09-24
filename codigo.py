@@ -4,6 +4,7 @@ import time
 #DELAY 
 pyautogui.PAUSE = 0.5
 
+# pyautogui = fazer automações com python
 # pyautogui.click -> clicar em algum lugar
 # pyautogui.press -> aperta 1 tecla do teclado
 # pyautogui.write -> escreve um texto
@@ -34,12 +35,50 @@ pyautogui.write("123456")
 # botao logar
 pyautogui.press("tab")
 pyautogui.press("enter")
-time.sleep(1)
+time.sleep(3)
 
 
 # Passo 3: Importar a base de dados
-# Passo 4: Cadastrar 1 produto
-pyautogui.click(x=1116, y=275)
-# Passo 5: Repetir para todos os produtos 
+import pandas
 
-# pyautogui = fazer automações com python
+tabela = pandas.read_csv("produtos.csv") #criei o pandas e armazenei dentro da variavel tabela
+print = (tabela)
+
+
+# Passo 4: Cadastrar 1 produto 
+pyautogui.click(x=1116, y=275)
+
+codigo = "MOLO000251"
+pyautogui.write(codigo)
+pyautogui.press("tab")
+
+marca = "Logitech"
+pyautogui.write(marca)
+pyautogui.press("tab")
+
+tipo = "Mouse"
+pyautogui.write(tipo)
+pyautogui.press("tab")
+
+categoria = "1"
+pyautogui.write(categoria)
+pyautogui.press("tab")
+
+preco_unitario = "25.96"
+pyautogui.write(preco_unitario)
+pyautogui.press("tab")
+
+custo = "6.50"
+pyautogui.write(custo)
+pyautogui.press("tab")
+
+obs = ""
+pyautogui.write(obs)
+pyautogui.press("tab")
+pyautogui.press("enter")
+
+pyautogui.scroll(3000)
+pyautogui.click(x=1116, y=275)
+
+
+# Passo 5: Repetir para todos os produtos
