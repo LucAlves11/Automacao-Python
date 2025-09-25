@@ -40,45 +40,45 @@ time.sleep(3)
 
 # Passo 3: Importar a base de dados
 import pandas
-
 tabela = pandas.read_csv("produtos.csv") #criei o pandas e armazenei dentro da variavel tabela
-print = (tabela)
 
 
 # Passo 4: Cadastrar 1 produto 
-pyautogui.click(x=1116, y=275)
+for linha in tabela.index: # para cada linha da minha tabela
+    pyautogui.click(x=1116, y=275)
 
-codigo = "MOLO000251"
-pyautogui.write(codigo)
-pyautogui.press("tab")
+    codigo = tabela.loc[linha, "codigo"]
+    pyautogui.write(codigo)
+    pyautogui.press("tab")
 
-marca = "Logitech"
-pyautogui.write(marca)
-pyautogui.press("tab")
+    marca = tabela.loc[linha, "marca"]
+    pyautogui.write(marca)
+    pyautogui.press("tab")
 
-tipo = "Mouse"
-pyautogui.write(tipo)
-pyautogui.press("tab")
+    tipo = tabela.loc[linha, "tipo"]
+    pyautogui.write(tipo)
+    pyautogui.press("tab")
 
-categoria = "1"
-pyautogui.write(categoria)
-pyautogui.press("tab")
+    categoria = str(tabela.loc[linha, "categoria"]) #string = texto no python -> str() agora ele vai pegar o numero entre aspas e n vai dar erro
+    pyautogui.write(categoria)
+    pyautogui.press("tab")
 
-preco_unitario = "25.96"
-pyautogui.write(preco_unitario)
-pyautogui.press("tab")
+    preco_unitario = str(tabela.loc[linha, "preco_unitario"])
+    pyautogui.write(preco_unitario)
+    pyautogui.press("tab")
 
-custo = "6.50"
-pyautogui.write(custo)
-pyautogui.press("tab")
+    custo = str(tabela.loc[linha, "custo"])
+    pyautogui.write(custo)
+    pyautogui.press("tab")
 
-obs = ""
-pyautogui.write(obs)
-pyautogui.press("tab")
-pyautogui.press("enter")
+    obs = tabela.loc[linha, "obs"]
+    if obs != "nan":
+        pyautogui.write(obs) 
+    
+    pyautogui.press("tab")
+    pyautogui.press("enter")
 
-pyautogui.scroll(3000)
-pyautogui.click(x=1116, y=275)
+    pyautogui.scroll(3000)
 
 
 # Passo 5: Repetir para todos os produtos
